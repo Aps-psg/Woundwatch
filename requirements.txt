@@ -1,0 +1,37 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# Wound Analysis API — pinned production requirements
+#
+# Rules:
+#   • Every direct dependency is pinned to an exact version (==).
+#   • scikit-learn MUST match the version used to serialise
+#     healing_status_logreg.joblib (see README).
+#   • numpy is capped at 1.x to avoid OpenCV / PyTorch C-API breakage
+#     introduced in numpy 2.x.
+#   • torch is pulled from the CPU-only PyTorch index to keep the image small.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── PyTorch index (CPU wheels) ────────────────────────────────────────────────
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+# ── Deep-learning framework ───────────────────────────────────────────────────
+torch==2.5.1
+
+# ── HuggingFace stack ─────────────────────────────────────────────────────────
+transformers==4.47.1
+huggingface-hub==0.26.2     # model-card / download layer used by transformers
+safetensors==0.4.5          # fast, safe model-weight serialisation
+
+# ── Web framework ─────────────────────────────────────────────────────────────
+fastapi==0.115.5
+uvicorn[standard]==0.32.1   # [standard] pulls in httptools + websockets
+python-multipart==0.0.20    # required for multipart/form-data (file uploads)
+pydantic==2.9.2             # runtime request/response validation (v2 API)
+
+# ── Image processing ──────────────────────────────────────────────────────────
+pillow==10.4.0
+opencv-python-headless==4.10.0.84   # headless build — no GUI deps in Docker
+numpy==1.26.4               # last 1.x release; numpy 2.x breaks OpenCV + torch
+
+# ── ML pipeline ───────────────────────────────────────────────────────────────
+joblib==1.4.2
+scikit-learn==1.6.1         # MUST match version used to train healing_status_logreg.joblib

@@ -1,57 +1,51 @@
 # ─────────────────────────────────────────────────────────────────────────────
-# WoundWatch — Backend (Python / FastAPI)
+# WoundWatch — monorepo root .gitignore
+# Covers both backend/ (Python/FastAPI) and frontend/ (Expo/React Native)
 # ─────────────────────────────────────────────────────────────────────────────
 
-# Python virtual environments
+# ── Python / Backend ──────────────────────────────────────────────────────────
 venv/
 .venv/
 env/
 ENV/
-
-# Python cache
 __pycache__/
 *.py[cod]
 *.pyo
 *.pyd
 .Python
-
-# Distribution / packaging
 *.egg-info/
 dist/
 build/
 
-# ML model weights (large files — downloaded via HuggingFace at runtime)
+# ML model binary weights (downloaded via HuggingFace at runtime)
 *.dylib
 *.so
 *.bin
 *.pt
 *.pth
-
-# HuggingFace cache
 .cache/
 huggingface/
 
-# Data files
+# ── Node / Frontend ───────────────────────────────────────────────────────────
+node_modules/
+.expo/
+.expo-shared/
+web-build/
+*.jsbundle
+
+# ── Shared ────────────────────────────────────────────────────────────────────
 data/
 *.zip
-
-# Environment variables
 .env
 .env.*
-
-# macOS
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Logs
 *.log
 logs/
 
-# Docker
-.dockerignore
+# ── macOS ─────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── IDE ───────────────────────────────────────────────────────────────────────
+.idea/
+*.swp
+*.swo

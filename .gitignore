@@ -1,3 +1,7 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# WoundWatch — Backend (Python / FastAPI)
+# ─────────────────────────────────────────────────────────────────────────────
+
 # Python virtual environments
 venv/
 .venv/
@@ -16,7 +20,7 @@ __pycache__/
 dist/
 build/
 
-# ML model weights (large files — download via HuggingFace at runtime)
+# ML model weights (large files — downloaded via HuggingFace at runtime)
 *.dylib
 *.so
 *.bin
@@ -26,6 +30,10 @@ build/
 # HuggingFace cache
 .cache/
 huggingface/
+
+# Data files
+data/
+*.zip
 
 # Environment variables
 .env

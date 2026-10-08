@@ -49,3 +49,11 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+# ── web/ (Next.js Vercel wrapper) ─────────────────────────────────────────────
+# public/ is populated at build time by `npx expo export` — never commit it
+web/public/*
+!web/public/README.md
+web/node_modules/
+web/.next/
+web/.env.local

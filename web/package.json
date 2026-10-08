@@ -1,0 +1,18 @@
+{
+  "name": "woundwatch-web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "prebuild": "cd ../frontend && EXPO_PUBLIC_API_BASE='' npx expo export --platform web && rm -rf ../web/public && cp -r dist ../web/public",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^15.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "typescript": "^5"
+  }
+}

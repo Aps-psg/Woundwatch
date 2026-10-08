@@ -12,6 +12,7 @@ All business logic lives under src/.
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from src.exceptions import WoundAPIError, unhandled_error_handler, wound_api_error_handler
 from src.ml.loader import load_all_models
@@ -40,6 +41,18 @@ app = FastAPI(
     ),
     version="1.0.0",
     lifespan=lifespan,
+)
+
+# ── CORS ─────────────────────────────────────────────────────────────────────
+# Allows the browser (Expo web / React Native web) to call this API from any
+# origin.  In production, replace "*" with your actual frontend domain.
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # ── Exception handlers ────────────────────────────────────────────────────────
